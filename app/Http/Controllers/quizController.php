@@ -14,7 +14,8 @@ class quizController extends Controller
     public function answer(Request $request)
     {
         $counter =0;
-        for ($i=0; $i < 21; $i++) {
+        $q =quiz::get()->count();
+        for ($i=0; $i < $q; $i++) {
             $counter+= $request->get('a_'.$i);
         }
          return view('Quiz.score',['r'=>$counter]);
